@@ -1,0 +1,308 @@
+$fiolet: #6c69ff;
+$light-fiolet: #bdbcff;
+$background: #ececec;
+$coral: #ff6f6f;
+$white: #ffffff;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $background;
+    overflow-x: hidden;
+}
+button{
+    background-color: $fiolet;
+}
+.Content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Toolbar {
+    width: 99.7%;
+    display: flex;
+    background-color: $white;
+    border: 2px solid $fiolet;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    img {
+        margin-left: 15px;
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        li {
+            margin-left: 15px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 23px;
+            a:link {
+                color: black;
+                text-decoration: none;
+            }
+            a:visited {
+                color: rgb(80, 80, 80);
+            }
+            a:hover {
+                color: $fiolet;
+            }
+        }
+    }
+}
+.Signin,
+.Register,
+.Profile {
+    margin-top: 4vw;
+    width: 320px;
+    height: 340px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    font-size: 15px;
+    p {
+        font-size: 25px;
+        margin-top: 0;
+        padding-top: 0;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            margin-bottom: 2vw;
+            height: 30px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-bottom: 2vw;
+            height: 30px;
+            color: $white;
+            background-color: $fiolet;
+            border-style: none;
+            &:active {
+                border: 1px solid black;
+            }
+        }
+    }
+}
+.Profile {
+    height: 400px;
+}
+.Card {
+    width: 270px;
+    height: 310px;
+    background: $white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+
+    .Card__Title {
+        height: 120px;
+        background-color: $light-fiolet;
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h2,
+        p {
+            margin: 0;
+            padding: 15px;
+        }
+        h2 {
+            font-weight: 300;
+        }
+        p {
+            align-self: flex-end;
+        }
+    }
+    .Card__Content {
+        padding: 15px 15px;
+        p {
+            margin: 0;
+            height: 100px;
+            overflow-x: hidden;
+            font-size: smaller;
+        }
+        .Card__Content__Buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            button {
+                display: block;
+                height: 32px;
+                width: 100%;
+                border-style: none;
+                &:active {
+                    border: 1px black solid;
+                }
+            }
+            :nth-child(1) {
+                background-color: $fiolet;
+                color: $white;
+            }
+            :nth-child(2) {
+                margin-left: 20px;
+            }
+        }
+    }
+}
+.Games-Gallery {
+    display: grid;
+    padding: 20px 0;
+    grid-template-columns: 270px 270px 270px;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    @media screen and(max-width: 1000px) {
+        grid-template-columns: 270px 270px;
+    }
+    @media screen and(max-width: 700px) {
+        grid-template-columns: 270px;
+    }
+}
+.Library,
+.Games,
+.Friends {
+    width: 80vw;
+    min-height: 780px;
+    background-color: $white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-top: 4vw;
+    padding: 0 4vw;
+    .Friends__Gallery {
+        & > div {
+            margin-bottom: 15px;
+        }
+    }
+}
+.Games {
+    .Games__Wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .Filter {
+        .fieldset {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            height: 30px;
+            position: relative;
+            p {
+                position: absolute;
+                bottom: 15px;
+                font-weight: 900;
+                font-family: cursive;
+            }
+        }
+    }
+}
+.Search {
+    width: 100%;
+    display: flex;
+    input {
+        flex-grow: 10;
+        height: 30px;
+    }
+    button {
+        flex-grow: 1;
+        margin-left: 1vw;
+        background-color: $fiolet;
+        color: $white;
+        border-style: none;
+        &:active {
+            border: 1px solid black;
+        }
+    }
+}
+.One_Friend {
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    border: 1px dashed black;
+    button {
+        margin-right: 20px;
+        color: $white;
+        border-style: none;
+        height: 50%;
+        &:active {
+            border: 1px black solid;
+        }
+    }
+    p {
+        display: inline;
+        margin-left: 20px;
+    }
+}
+.default {
+    background-color: $fiolet;
+}
+.coral {
+    background-color: $coral;
+}
+.NoFound{
+    margin-top: 30px;
+    position: absolute;
+    font-size: 2vw;
+    font-weight: 700;
+}
+@mixin alert{
+    position:fixed;
+    top:0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 320px;
+    height: 70px;
+    text-align: center;
+    border:2px solid black;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 3;
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    p{
+        margin: 0;
+        padding: 0;
+        font-size: 1vw;
+    }
+}
+.inform{
+    @include alert();
+    background-color: rgb(126, 155, 194);
+}
+.borderErr{
+    border: 1px solid red;
+    outline-color: red;
+}
+.error{
+    @include alert();
+    background-color: rgb(226, 60, 60);
+}
+.success{
+    @include alert();
+    background-color: rgb(60, 226, 96);
+}
