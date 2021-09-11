@@ -1,2 +1,2 @@
-const host = "http://localhost:8081"
+const host = "https://steam-val.herokuapp.com"
 export default host 
