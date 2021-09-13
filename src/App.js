@@ -1,32 +1,60 @@
-import React, { Component } from "react";
-import { Route, BrowserRouter, Switch } from "react-router-dom"
-import "./App.scss";
-import Signin from "./components/Signin";
-import Profile from "./components/Profile";
-import Toolbar from "./components/Toolbar";
-import Library from "./components/Library";
-import Games from "./components/Games"
-import Friends from "./components/Friends";
+import { useState, useMemo} from "react";
+import React from "react";
+import MyInput from "./MyInput";
+import BoilingVerdict from "./BoilingVerdict";
 
-class App extends Component{
-  render(){
+const tempCalc = () => {
+  const [input,setInput] = useState({name:"",val:""});
+
+  const toCelsius = fahrenheit  => (fahrenheit - 32) * 5 / 9;
+  const toFahrenheit = celsius => (celsius * 9 / 5) + 32;
+  
+  const twoWayConvertation = (inputType, val) =>{
+    const value = Number(val);
+    if(!value || !inputType){
+      return{
+        fahrenheit:"",
+        celsius:""
+      }
+    }
+    else{
+        if(inputType ==="f"){
+          return {
+            fahrenheit:val.toString(),
+            celsius:toCelsius(val).toString()
+          }
+        }
+        else if (inputType ==="c"){
+          return {
+            fahrenheit:toFahrenheit(val).toString(),
+            celsius:val.toString()
+          }
+        }
+      }
+    }
+
+    const memoizedCallback = useMemo(
+      () => {return twoWayConvertation(input.name,input.val)},
+      [input.name,input.val]
+    )
     return(
-      <BrowserRouter>
-        <div className="App">
-          <div className="Content-wrapper">
-              <Toolbar />
-              <Switch>
-                <Route exact path="/" component={Signin} />
-                <Route path="/games" component={Games} />
-                <Route path="/profile" component ={Profile} />
-                <Route path="/friends" component ={Friends} />
-                <Route path="/library" component ={Library} />
-              </Switch>
-          </div>
-        </div>
-      </BrowserRouter>
-    );
-  }
+      <div>
+        <MyInput 
+          type="c"
+          onChange={setInput}
+          value={memoizedCallback.celsius}
+          name="celsius"
+        />
+        <MyInput 
+          type="f"
+          onChange={setInput}
+          value={memoizedCallback.fahrenheit}
+          name="fahrenheit"
+        />
+        <hr />
+        <BoilingVerdict cel={memoizedCallback.celsius}/>
+      </div>
+    )
 }
 
-export default App;
+export default tempCalc;
